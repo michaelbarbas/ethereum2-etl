@@ -45,6 +45,23 @@ class Ethereum2Service(object):
     def get_beacon_committees(self, epoch):
         return self.ethereum2_teku_api.get_beacon_committees(epoch=epoch)
 
+    def get_rewards_block(self, slot):
+        return self.ethereum2_teku_api.get_rewards_block(slot)
+
+    def get_rewards_blocks(self, slot_batch):
+        if not slot_batch:
+            return []
+
+        for slot in slot_batch:
+            try:
+                block_response = self.get_rewards_block(slot)
+                yield block_response
+            except HTTPError as e:
+                if e.response.status_code == 404:
+                    yield None
+                else:
+                    raise e
+
     def get_beacon_blocks(self, slot_batch):
         if not slot_batch:
             return []

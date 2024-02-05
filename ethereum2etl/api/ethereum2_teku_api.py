@@ -44,6 +44,9 @@ class Ethereum2TekuApi:
     def get_beacon_genesis(self):
         return self.get(f'/eth/v1/beacon/genesis')
 
+    def get_rewards_block(self, slot):
+        return self.get(f'/eth/v1/beacon/rewards/blocks/{slot}')
+
     def get(self, endpoint):
         raw_response = make_get_request(
             self.provider_uri,
