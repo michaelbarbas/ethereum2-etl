@@ -31,7 +31,7 @@ class BeaconRewardsBlocksMapper(object):
         beacon_rewards_blocks = BeaconRewardsBlocks()
 
         message = json_dict.get('data', EMPTY_OBJECT)
-        beacon_rewards_blocks.attestations = to_int(message.get('proposer_index'))
+        beacon_rewards_blocks.proposer_index = to_int(message.get('proposer_index'))
         beacon_rewards_blocks.total = message.get('total')
         beacon_rewards_blocks.attestations = message.get('attestations')
         beacon_rewards_blocks.sync_aggregate = message.get('sync_aggregate')

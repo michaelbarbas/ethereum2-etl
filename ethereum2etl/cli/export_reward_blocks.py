@@ -20,9 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import logging
-from datetime import datetime
-
 import click
 from blockchainetl_common.logging_utils import logging_basic_config
 
